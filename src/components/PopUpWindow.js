@@ -133,7 +133,7 @@ const PopUpWindow = ({ currentBook, type }) => {
   };
 
   return (
-    <div className="modal fade pop-up-window" id="myModal">
+    <div className="modal fade pop-up-window p-0" id="myModal">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
