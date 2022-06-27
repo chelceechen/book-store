@@ -32,6 +32,7 @@ const PopUpWindow = ({ currentBook, type }) => {
     price: 0,
     category: "Action and Adventure",
     description: "",
+    docId: "",
   });
 
   useEffect(() => {
@@ -44,6 +45,7 @@ const PopUpWindow = ({ currentBook, type }) => {
         price: currentBook.price,
         category: currentBook.category,
         description: currentBook.description,
+        docId: currentBook.docId,
       });
     } else {
       setBookData({
@@ -54,6 +56,7 @@ const PopUpWindow = ({ currentBook, type }) => {
         price: 0,
         category: "Action and Adventure",
         description: "",
+        docId: "",
       });
     }
   }, [currentBook, type]);
@@ -64,21 +67,21 @@ const PopUpWindow = ({ currentBook, type }) => {
         setTitleErrShow(true);
       } else {
         setTitleErrShow(false);
-        setBookData((prev) => ({
-          ...prev,
-          title: value,
-        }));
       }
+      setBookData((prev) => ({
+        ...prev,
+        title: value,
+      }));
     } else if (name === "author") {
       if (value.trim().length === 0) {
         setAuthorErrShow(true);
       } else {
         setAuthorErrShow(false);
-        setBookData((prev) => ({
-          ...prev,
-          author: value,
-        }));
       }
+      setBookData((prev) => ({
+        ...prev,
+        author: value,
+      }));
     } else if (name === "price") {
       if (!value) {
         setPriceErrShow(true);
@@ -107,11 +110,11 @@ const PopUpWindow = ({ currentBook, type }) => {
         setDescriptionErrShow(true);
       } else {
         setDescriptionErrShow(false);
-        setBookData((prev) => ({
-          ...prev,
-          description: value,
-        }));
       }
+      setBookData((prev) => ({
+        ...prev,
+        description: value,
+      }));
     }
   };
 
@@ -187,6 +190,7 @@ const PopUpWindow = ({ currentBook, type }) => {
                   className="form-control"
                   min={0}
                   max={1000}
+                  step=".01"
                   value={bookData.price}
                   onChange={(e) => {
                     handleInputChange(e.target.value, "price");
